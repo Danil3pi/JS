@@ -88,15 +88,13 @@
         // console.dir(zeroRect);
 
         //fixed
+<<<<<<< HEAD
         let fixed_instance = document.getElementById('fixed_elem');
         
         function createMessageFixed(element, message) {
             let underMessage = document.createElement('p');
             underMessage.style.cssText = 'position: fixed; color: red';
             underMessage.innerHTML = message;
-
-            let coordinates = element.getBoundingClientRect();
-
             underMessage.style.top = coordinates.bottom + 'px';
             return underMessage;
         }
@@ -136,7 +134,6 @@
         //А можно ли позиционировать элемент не через css?
         // Как смотреть прокрутку документа?
         //Task1
-
     </script>
 </body>
 </html>
