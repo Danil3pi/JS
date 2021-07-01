@@ -9,7 +9,14 @@
 
         *{
             box-sizing: border-box;
+            /* padding: 0; */
         }
+
+        h1{
+            border: 5px solid black;
+            /* padding: 2px; */
+        }
+
         .example{
             border: 5px solid burlywood;
             height: 100px;
@@ -36,6 +43,11 @@
             border:5px solid rgb(56, 37, 11) ;
             text-align: center;
         }
+
+        p{
+            margin: 0;
+        }
+
     </style>
 </head>
 <body style='height: 300vh;'>
@@ -44,7 +56,8 @@
         Zero
     </div>
 
-    <h1 id='elem'>Words under me!</h1>
+    <h1 id='fixed_elem'>Words under me(fixed)!</h1>
+    <h1 id='absolute_elem'>Words under me(absolute)!</h1>
 
     <div class="example">
         <div class="inner"'> 
@@ -75,21 +88,54 @@
         // console.dir(zeroRect);
 
         //fixed
-        let instance = document.getElementById('elem');
+        let fixed_instance = document.getElementById('fixed_elem');
         
-        function createMessage(element, message) {
+        function createMessageFixed(element, message) {
             let underMessage = document.createElement('p');
             underMessage.style.cssText = 'position: fixed; color: red';
             underMessage.innerHTML = message;
 
             let coordinates = element.getBoundingClientRect();
 
-            underMessage.style.top = coordinates.bottom + 200 + 'px';
+            underMessage.style.top = coordinates.bottom + 'px';
             return underMessage;
         }
 
-        let message = createMessage(instance, 'Hello, I\'m message!');
+        let message = createMessageFixed(fixed_instance, 'Hello, I\'m a message!');
         document.body.append(message);
+
+        //absolute
+        function getCoords(element) {
+            let box = element.getBoundingClientRect();
+
+            return {
+                bottom: box.top + pageYOffset + box.height,
+                left: box.left + pageXOffset,
+            }
+        }
+
+        function createMessage(elem, html) {
+            let message = document.createElement('div');
+            message.style.cssText = 'position: absolute; color: #999; text-weight: bold;'
+
+            let coords = getCoords(elem);
+
+            console.log(coords.left, coords.top);
+
+            message.style.top = coords.bottom + 'px';
+            message.style.left = coords.left + 'px';
+
+            message.innerHTML = html;
+
+            return message;
+        }
+        let absolute_instance = document.getElementById('absolute_elem');
+
+        let mess = createMessage(absolute_instance, 'IIIIIIIIIIIIIIIII am a text!')
+        document.body.append(mess);
+        //А можно ли позиционировать элемент не через css?
+        //Task1
+
     </script>
 </body>
 </html>
