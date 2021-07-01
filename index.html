@@ -75,21 +75,21 @@
         // console.dir(zeroRect);
 
         //fixed
-        let instance = document.getElementById('elem');
+        // let instance = document.getElementById('elem');
         
-        function createMessage(element, message) {
-            let underMessage = document.createElement('p');
-            underMessage.style.cssText = 'position: fixed; color: red';
-            underMessage.innerHTML = message;
+        // function createMessage(element, message) {
+        //     let underMessage = document.createElement('p');
+        //     underMessage.style.cssText = 'position: fixed; color: red';
+        //     underMessage.innerHTML = message;
 
-            let coordinates = element.getBoundingClientRect();
+        //     let coordinates = element.getBoundingClientRect();
 
-            underMessage.style.top = coordinates.bottom + 200 + 'px';
-            return underMessage;
-        }
+        //     underMessage.style.top = coordinates.bottom + 200 + 'px';
+        //     return underMessage;
+        // }
 
-        let message = createMessage(instance, 'Hello, I\'m message!');
-        document.body.append(message);
+        // let message = createMessage(instance, 'Hello, I\'m message!');
+        // document.body.append(message);
     </script>
 </body>
 </html>
